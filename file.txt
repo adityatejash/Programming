@@ -1,0 +1,9 @@
+Hello, this is written to the file.
+Writing another line.
+
+/"?2*
+
+/"?2*
+*/"?2*
+
+/"?2*k9* *8#

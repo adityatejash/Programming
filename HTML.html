@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>College Student Registration Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #000000;
+      margin: 0;
+      padding: 0;
+      display: center;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    
+    .form-container {
+      background-color: orange;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 600px;
+      padding: 30px;
+      margin: 20px;
+    }
+
+    h2 {
+      text-align: center;
+      color: green;
+      margin-bottom: 20px;
+    }
+
+    label {
+      font-size: 16px;
+      font-weight: bold;
+      color: #555;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0 16px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+      font-size: 16px;
+    }
+
+    input[type="radio"] {
+      margin-right: 10px;
+    }
+
+    input[type="submit"] {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 5px;
+      width: 100%;
+      transition: background-color 0.3s ease;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #45a049;
+    }
+
+    .radio-buttons label {
+      font-size: 16px;
+      margin-right: 20px;
+    }
+
+    textarea {
+      font-size: 16px;
+      resize: vertical;
+    }
+
+    select {
+      font-size: 16px;
+    }
+
+    .form-container .row {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .form-container .row label {
+      width: 48%;
+    }
+
+    .form-container .row input {
+      width: 48%;
+    }
+
+    .form-container .row select {
+      width: 48%;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="form-container">
+    <h2>College Student Registration Form</h2>
+
+    <form action="/submit-form" method="post">
+      <label for="name">Full Name:</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="studentId">Student ID:</label>
+      <input type="text" id="studentId" name="studentId" required>
+
+      <label for="enrolmentNo">Enrolment Number:</label>
+      <input type="text" id="enrolmentNo" name="enrolmentNo" required>
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="phone">Phone Number:</label>
+      <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" placeholder="10-digit number" required>
+
+      <label for="branch">Branch:</label>
+      <select id="branch" name="branch" required>
+        <option value="">--Select Branch--</option>
+        <option value="CSE">Computer Science</option>
+        <option value="ECE">Electronics & Communication</option>
+        <option value="ME">Mechanical Engineering</option>
+        <option value="CE">Civil Engineering</option>
+      </select>
+
+      <label for="course">Course:</label>
+      <select id="course" name="course" required>
+        <option value="">--Select Course--</option>
+        <option value="BTech">B.Tech</option>
+        <option value="MTech">M.Tech</option>
+        <option value="MBA">MBA</option>
+      </select>
+
+      <label>Gender:</label>
+      <div class="radio-buttons">
+        <input type="radio" id="male" name="gender" value="Male" required>
+        <label for="male">Male</label>
+        <input type="radio" id="female" name="gender" value="Female">
+        <label for="female">Female</label>
+        <input type="radio" id="other" name="gender" value="Other">
+        <label for="other">Other</label>
+      </div>
+
+      <label for="year">Year of Study:</label>
+      <select id="year" name="year" required>
+        <option value="">--Select Year--</option>
+        <option value="1st">1st Year</option>
+        <option value="2nd">2nd Year</option>
+        <option value="3rd">3rd Year</option>
+        <option value="4th">4th Year</option>
+      </select>
+
+      <label for="address">Address:</label>
+      <textarea id="address" name="address" rows="4" cols="40" required></textarea>
+
+      <input type="submit" value="Register">
+    </form>
+  </div>
+
+</body>
+</html>
