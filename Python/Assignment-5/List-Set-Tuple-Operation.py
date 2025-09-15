@@ -15,7 +15,7 @@ print("Popped Item:", popped_item)
 print("Sliced List (first 2):", fruits[:2])
 for fruit in fruits:
     print("Fruit:", fruit)
-print("Aniket Bharti -- BTCS24O1024")
+print("Aditya Prakash-- BTCS24O1013")
 print("\n")
 
 
@@ -28,7 +28,7 @@ print("First element:", numbers[0])
 print("Last element:", numbers[-1])
 print("Count of 20:", numbers.count(20))
 print("Index of 30:", numbers.index(30))
-print("Aniket Bharti -- BTCS24O1024")
+print("Aditya Prakash-- BTCS24O1013")
 print("\n")
 
 # Set Operations
@@ -45,4 +45,4 @@ print("Difference (Set1 - Set2):", set1 - set2)
 set1.add(7)
 set1.discard(2)
 print("After Add/Remove in Set1:", set1)
-print("Aniket Bharti -- BTCS24O1024")
+print("Aditya Prakash-- BTCS24O1013")

@@ -1,6 +1,8 @@
 {
     "files.associations": {
-        "ostream": "cpp"
+        "ostream": "cpp",
+        "random": "c",
+        "limits": "c"
     },
     "cmake.sourceDirectory": "D:/Programming/testingCLion"
 }

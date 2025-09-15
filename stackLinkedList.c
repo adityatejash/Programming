@@ -8,20 +8,21 @@ struct node {
 
 struct node* top = NULL;
 
-struct node* createNode (int item){
+struct node* createNode (int value){
     struct node* newNode = (struct node*)malloc(sizeof(struct node));
-    newNode->data = item;
+    newNode->data = value;
     newNode->link = NULL;
     return newNode;
-};
+}
 
-void push(int item){
-    struct node* newNode = createNode(item);
+void push(int value){
+    struct node* newNode = createNode(value);
     if (newNode == NULL){
         return;
     }
     newNode->link = top;
     top = newNode;
+    return;
 }
 
 void pop(){
@@ -36,6 +37,7 @@ void pop(){
 
 void display(){
     if (top == NULL){
+        printf("Stack Empty\n");
         return;
     }
     struct node* temp = top;
@@ -47,14 +49,16 @@ void display(){
     return;
 }
 
-void main(){
+void peek(){
+    
+}
+
+int main(){
     push(10);
     push(20);
-    push(30);
-    push(40);
-    display();   // 40,30,20,10
-    // peek();      // 40
-    pop();       // removes 40
-    display();   // 30,20,10
-    return;
+    display();
+    pop();
+    display();
+
+    return 0;
 }
