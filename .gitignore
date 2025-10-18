@@ -1,1 +1,106 @@
+# -------------------------------
+# OS-specific files
+# -------------------------------
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Linux
+*~
+
+# -------------------------------
+# IDE / Editor folders
+# -------------------------------
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# -------------------------------
+# Python
+# -------------------------------
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.env
+.venv
+env/
+venv/
+*.egg
+*.egg-info
+dist/
+build/
+
+# -------------------------------
+# C, C++, Java, and other builds
+# -------------------------------
+*.out
 *.exe
+*.obj
+*.class
+*.jar
+*.war
+*.o
+*.a
+*.so
+*.dll
+
+# -------------------------------
+# Node / JavaScript
+# -------------------------------
+node_modules/
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+package-lock.json
+dist/
+build/
+
+# -------------------------------
+# Logs and temporary files
+# -------------------------------
+*.log
+*.tmp
+*.bak
+*.swp
+*.swo
+
+# -------------------------------
+# Other non-source directories
+# -------------------------------
+uploads/
+data/
+dataset/
+__MACOSX/
+.cache/
+*.zip
+*.tar
+*.tar.gz
+*.rar
+
+# -------------------------------
+# Allow only programming files
+# -------------------------------
+# Python, C, C++, Java, JS, HTML, CSS
+!*.py
+!*.c
+!*.cpp
+!*.h
+!*.hpp
+!*.java
+!*.js
+!*.ts
+!*.html
+!*.css
+!*.json
+!*.xml
+!*.php
+!*.sql
+!*.ipynb
