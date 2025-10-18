@@ -1,60 +1,75 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-struct node {
-    int data;
-    struct node* link;
+# define max 5
+
+struct queue {
+    int item[max];
+    int front, rear; 
 };
 
-struct node* top = NULL;
-
-struct node* createNode (int item){
-    struct node* newNode = (struct node*)malloc(sizeof(struct node));
-    newNode->data = item;
-    newNode->link = NULL;
-    return newNode;
-};
-
-void push(int item){
-    struct node* newNode = createNode(item);
-    if (newNode == NULL){
-        return;
-    }
-    newNode->link = top;
-    top = newNode;
+void initializeQueue (struct queue* q){
+    q->front = -1;
+    q->rear = -1;
 }
 
-void pop(){
-    if (top == NULL){
-        return;
-    }
-    struct node* temp = top;
-    top = top->link;
-    free(temp);
-    return;
+int isFull (struct queue* q){
+    return q->rear == max-1;
 }
 
-void display(){
-    if (top == NULL){
+int isEmpty (struct queue* q){
+    return q->front == -1;
+}
+
+void enqueue (struct queue* q,int value){
+    if (isFull(q)){
+        printf("Queue FULL\n");
         return;
     }
-    struct node* temp = top;
-    while (temp != NULL){
-        printf("%d\n",temp->data);
-        temp = temp->link;
+    if (q->front == -1){
+        q->front = 0;
+    }
+    q->item[++q->rear] = value;
+}
+
+void dequeue (struct queue* q){
+    if (isEmpty(q)){
+        printf("Queue EMPTY\n");
+        return;
+    }
+    q->front++;
+}
+
+void display(struct queue* q){
+    if (isEmpty(q)){
+        printf("Queue EMPTY\n");
+        return;
+    }
+    for (int i=q->front; i<=q->rear; i++){
+        printf("%d ",q->item[i]);
     }
     printf("\n");
-    return;
 }
 
-void main(){
-    push(10);
-    push(20);
-    push(30);
-    push(40);
-    display();   // 40,30,20,10
-    // peek();      // 40
-    pop();       // removes 40
-    display();   // 30,20,10
-    return;
+int main(){
+    struct queue q;
+    initializeQueue(&q);
+
+    enqueue(&q,10);
+    enqueue(&q,20);
+    enqueue(&q,30);
+    enqueue(&q,40);
+    enqueue(&q,40);
+    enqueue(&q,40);
+
+    display(&q);
+    
+    dequeue(&q);
+    dequeue(&q);
+    dequeue(&q);
+    dequeue(&q);
+    dequeue(&q);
+    dequeue(&q);
+    dequeue(&q);
+    display(&q);
 }

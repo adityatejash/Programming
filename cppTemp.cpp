@@ -1,88 +1,60 @@
 #include <iostream>
+#include <vector>
+#include <algorithm>
 using namespace std;
 
-class node {
-public:
-    int data;
-    node* linkForward;
-    node* linkBackward;
-
-    node (int value){
-        data = value;
-        linkForward = nullptr;
-        linkBackward = nullptr;
-    }
+struct ListNode {
+    int val;
+    ListNode* next;
+    ListNode() : val(0), next(nullptr) {}
+    ListNode(int x) : val(x), next(nullptr) {}
+    ListNode(int x, ListNode *next) : val(x), next(next) {}
 };
 
-class linkedList {
-    node* head;    
+class Solution {
 public:
-    linkedList (){
-        head = nullptr;
-    }
+    ListNode* mergeTwoLists (ListNode* list1,ListNode* list2){
 
-    // node insertion at end
-    void insertAtEnd (int value){
-        node* newNode = new node(value);
-        
-        if (head == nullptr){
-            head = newNode;
-            return;
-        }
+        ListNode* mergedSortedList = new ListNode(0);
+        ListNode* tail = mergedSortedList;
 
-        node* temp = head;
-        while (temp->linkForward != nullptr){
-            temp = temp->linkForward;
-        }
-        temp->linkForward = newNode;
-        newNode->linkBackward = temp;
-        return;
-    }
-
-    // node deletion at end
-    void deleteAtEnd (){
-        if (head == nullptr){
-            cout << "No elements to delete." << endl;
-            return;
-        } else if (head->linkForward == nullptr){
-            delete head;
-            head = nullptr;
-            return;
-        }
-        node *temp = head;
-        node *previous = nullptr;
-        while (temp->linkForward != nullptr){
-            previous = temp;
-            temp = temp->linkForward;
-        }
-        delete temp;
-        previous->linkForward = nullptr;
-        return;
-    } 
-
-    // display list
-    void display(){
-        node* temp = head;
-        while (temp != nullptr){
-            if (temp->linkForward == nullptr){
-                cout << temp->data << endl;
-                return;
+        while (list1 && list2){
+            if (list1->val < list2->val){
+                tail->next = list1;
+                list1 = list1->next;
+            } else {
+                tail->next = list2;
+                list2 = list2->next;
             }
-            cout << temp->data << " --> ";
-            temp = temp->linkForward;
+            tail = tail->next;
         }
-        return;
-    }
 
+        if (list1 != nullptr){
+            tail->next = list1;
+        } else {
+            tail->next = list2;
+        }
+
+        ListNode* head = mergedSortedList->next;
+        delete mergedSortedList;
+
+        return head;
+    }
 };
 
-int main(){
-    linkedList list;
-    list.insertAtEnd(10);
-    list.insertAtEnd(20);
-    list.insertAtEnd(30);
-    list.display();
-    list.deleteAtEnd();
-    list.insertAtEnd(40);
-    list.display();
+int main() {
+    ListNode* list1 = new ListNode(1);
+    list1->next = new ListNode(3);
+    list1->next->next = new ListNode(5);
+
+    ListNode* list2 = new ListNode(2);
+    list2->next = new ListNode(4);
+    list2->next->next = new ListNode(6);
+
+    Solution sol;
+    ListNode* merged = sol.mergeTwoLists(list1, list2);
+
+    printList(merged);  // Output: 1 2 3 4 5 6
+
+    return 0;
 }

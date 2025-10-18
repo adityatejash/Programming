@@ -4,5 +4,6 @@
         "random": "c",
         "limits": "c"
     },
-    "cmake.sourceDirectory": "D:/Programming/testingCLion"
+    "cmake.sourceDirectory": "D:/Programming/testingCLion",
+    "C_Cpp.errorSquiggles": "disabled"
 }

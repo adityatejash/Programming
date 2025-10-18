@@ -30,6 +30,19 @@ void insertAtEnd(struct node** head, int value){
     return;
 }
 
+void insertAtBegin (struct node** head, int value){
+    struct node* newNode = createNode(value);
+
+    if (*head == NULL){
+        *head = newNode;
+        return;
+    }
+
+    newNode->linkForward = *head;
+    *head = newNode;
+    return;
+}
+
 void display(struct node** head){
     struct node* temp = *head;
     while (temp != NULL){
@@ -52,5 +65,11 @@ void main(){
     display(&head);
 
     insertAtEnd(&head,30);
+    display(&head);
+    
+    insertAtBegin(&head,40);
+    display(&head);
+
+    insertAtBegin(&head,50);
     display(&head);
 }
