@@ -5,7 +5,7 @@
 
 struct queue {
     int item[max];
-    int front, rear; 
+    int front, rear;
 };
 
 void initializeQueue (struct queue* q){

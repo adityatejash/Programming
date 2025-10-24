@@ -1,60 +1,84 @@
 #include <iostream>
-#include <vector>
-#include <algorithm>
 using namespace std;
 
-struct ListNode {
-    int val;
-    ListNode* next;
-    ListNode() : val(0), next(nullptr) {}
-    ListNode(int x) : val(x), next(nullptr) {}
-    ListNode(int x, ListNode *next) : val(x), next(next) {}
-};
-
-class Solution {
+class node {
 public:
-    ListNode* mergeTwoLists (ListNode* list1,ListNode* list2){
+    int data;
+    node* left;
+    node* right;
 
-        ListNode* mergedSortedList = new ListNode(0);
-        ListNode* tail = mergedSortedList;
-
-        while (list1 && list2){
-            if (list1->val < list2->val){
-                tail->next = list1;
-                list1 = list1->next;
-            } else {
-                tail->next = list2;
-                list2 = list2->next;
-            }
-            tail = tail->next;
-        }
-
-        if (list1 != nullptr){
-            tail->next = list1;
-        } else {
-            tail->next = list2;
-        }
-
-        ListNode* head = mergedSortedList->next;
-        delete mergedSortedList;
-
-        return head;
+    node (int value){
+        data = value;
+        left = right = nullptr;
     }
 };
 
-int main() {
-    ListNode* list1 = new ListNode(1);
-    list1->next = new ListNode(3);
-    list1->next->next = new ListNode(5);
+node* insert (node* root, int value){
+    if (root == nullptr){
+        return new node(value);
+    }
 
-    ListNode* list2 = new ListNode(2);
-    list2->next = new ListNode(4);
-    list2->next->next = new ListNode(6);
+    if (value < root->data){
+        root->left = insert(root->left, value);
+    } else {
+        root->right = insert(root->right, value);
+    }
 
-    Solution sol;
-    ListNode* merged = sol.mergeTwoLists(list1, list2);
+    return root;
+}
 
-    printList(merged);  // Output: 1 2 3 4 5 6
+void inOrder (node* root){
+    if (root != nullptr){
+        inOrder(root->left);
+        cout << root->data << ", "; 
+        inOrder(root->right);
+    }
+    return;
+}
+
+void preOrder (node* root){
+    if (root != nullptr){
+        cout << root->data << ", "; 
+        preOrder(root->left);
+        preOrder(root->right);
+    }
+    return;
+}
+
+void postOrder (node* root){
+    if (root != nullptr){
+        postOrder(root->left);
+        postOrder(root->right);
+        cout << root->data << ", "; 
+    }
+    return;
+}
+
+int main(){
+    node* root = nullptr;
+
+    int n, value;
+
+    cout << "Enter number of nodes: " ;
+    cin >> n;
+
+    for (int i=0; i<n; i++){
+        cout << "Enter Value " << i+1 << ": ";
+        cin >> value;
+        root = insert(root, value);
+    }
+
+    cout << "Inorder: ";
+    inOrder(root);
+    cout << endl;
+
+    cout << "preOrder: ";
+    preOrder(root);
+    cout << endl;
+    
+    cout << "postOrder: ";
+    postOrder(root);    
+    cout << endl;
 
     return 0;
 }
