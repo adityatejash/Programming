@@ -49,9 +49,9 @@ void display(){
     return;
 }
 
-void peek(){
+// void peek(){
     
-}
+// }
 
 int main(){
     push(10);

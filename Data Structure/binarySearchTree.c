@@ -70,7 +70,6 @@ int main(){
         scanf("%d",&flag);
     }
     
-
     printf("Inorder: ");
     inOrder(head);
     printf("\n");

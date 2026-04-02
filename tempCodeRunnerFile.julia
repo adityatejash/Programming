@@ -1,0 +1,9 @@
+from tkinter import *
+
+root = Tk()                   # Create main window
+root.title("My First GUI")    # Set window title
+root.geometry("400x300")      # Set window size (width x height)
+root.resizable(False, False)  # Disable resizing (optional)
+root.configure(bg="lightblue")# Background color
+
+root.mainloop()               # Start GUI event loop

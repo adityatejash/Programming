@@ -1,0 +1,29 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+
+d = pd.read_csv(r"C:\Users\Aditya Prakash\Downloads\train_titanic.csv")
+df = pd.DataFrame(d)
+
+print("Shape: ",df.shape)
+print("Description:\n",df.describe())
+col = df.columns.to_list()
+print("Columns: ",col)
+
+print("Second Index Element:\n",df.iloc[2])
+print("First Five:\n ",df.head())
+
+print("Last Five:\n ",df.tail())
+
+print("Unique Ages: ",df['Age'].unique())
+
+print("Number of person of Unique Ages:\n",df['Age'].value_counts())
+
+df.plot(x='Age',y='Fare', kind = 'density')
+
+plt.xlabel('Age')
+
+plt.ylabel('Fare')
+
+plt.show()
+
+print(df[df['Survived'] == 1]['Sex'].value_counts())

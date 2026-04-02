@@ -1,0 +1,3 @@
+Hello! This is a sample text file.
+For Python Lab - 7.Hello! This is a sample text file.
+For Python Lab - 7.
