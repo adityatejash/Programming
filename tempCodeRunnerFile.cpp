@@ -1,33 +1,31 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <stack>
+#include <unordered_map>
+
 using namespace std;
 
-void print(int top, char stack[]){
-    for (int i=top; i>=0; i--){
-        cout << stack[i] << endl;
+int func (vector<int> v, int k){
+    vector<int> t;
+    int sum = 0;
+    for (int i : v){
+        sum += i;
+        t.push_back(sum);
     }
+
+    vector<int> nv;
+    for (int i=1; i<t.size(); i++){
+        if (t[i] <= k){
+            nv.push_back(v[i]);
+            nv.push_back(v[i-1]);
+        }
+    }
+    return nv.size();
 }
 
-// int main(){
-//     string s = "aditya prakash";
-
-//     char stack[s.size()];
-//     int top = -1;
-
-//     // Push
-//     for (int i=0; i<s.size(); i++){
-//         stack[++top] = s[i];
-//     }
-
-//     // Pop
-//     while (top != -1){
-//         cout << stack[top--];
-//     }
-
-//     print(top, stack);
-// }
-
-
 int main(){
-    char a = 'z';
-    cout << int(a) - 97;
+    vector<int> v = {1,-1,5,-2,3};
+    int k = 3;
+    cout << func (v, k);
 }
