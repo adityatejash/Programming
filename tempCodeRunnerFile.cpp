@@ -1,31 +1,34 @@
 #include <iostream>
-#include <vector>
-#include <algorithm>
-#include <stack>
-#include <unordered_map>
-
 using namespace std;
 
-int func (vector<int> v, int k){
-    vector<int> t;
-    int sum = 0;
-    for (int i : v){
-        sum += i;
-        t.push_back(sum);
+#include <iostream>
+using namespace std;
+
+long long ncr(int n, int r) {
+    r = min (r, n-r);
+
+    int res = 1;
+    for (int i=1; i<=r; i++){
+        res = res * (n + 1 - i) / i;
     }
 
-    vector<int> nv;
-    for (int i=1; i<t.size(); i++){
-        if (t[i] <= k){
-            nv.push_back(v[i]);
-            nv.push_back(v[i-1]);
-        }
-    }
-    return nv.size();
+    return res;
 }
 
-int main(){
-    vector<int> v = {1,-1,5,-2,3};
-    int k = 3;
-    cout << func (v, k);
+long long npr (int n, int r){
+    long long res = 1;
+
+    for (int i=0; i<r; i++){
+        res *= (n - i);
+    }
+
+    return res;
+}
+
+int main() {
+    int n = 10;
+    int r = 6;
+
+    cout << ncr(n, r) << endl;
+    cout << npr(n, r) << endl;
 }

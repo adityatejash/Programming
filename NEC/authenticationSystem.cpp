@@ -1,32 +1,46 @@
 #include <iostream>
+#include <unordered_map>
 using namespace std;
 
-struct User {
-    string username;
-    string password;
-};
+int main() {
+    unordered_map<string, string> user_pass;
 
-int main(){
-    User user;
+    string username, password;
 
-    cout << "Set Username: ";
-    cin >> user.username;
+    // Register user
+    cout << "Enter Username: ";
+    cin >> username;
 
     cout << "Set Password: ";
-    cin >> user.password;
+    cin >> password;
 
+    user_pass[username] = password;
+
+    cout << "\nUser Registered Successfully!" << endl;
+
+    int attempt = 3;
     string u, p;
-    cout << "Username and Password Set!!" << endl;
 
-    cout << "Enter Username: ";
-    cin >> u;
+    // Login system
+    while (attempt--) {
+        cout << "\nEnter Username: ";
+        cin >> u;
 
-    cout << "Enter Password: ";
-    cin >> p;
+        cout << "Enter Password: ";
+        cin >> p;
 
-    if (u == user.username && p == user.password){
-        cout << "Login Successful!" << endl; 
-    } else {
-        cout << "Error! Wrong Username or Password!" << endl;
+        if (user_pass.find(u) == user_pass.end()) {
+            cout << "User does not exist!" << endl;
+        } else if (user_pass[u] != p) {
+            cout << "Wrong Password!" << endl;
+        } else {
+            cout << "Login Successful!" << endl;
+            return 0;
+        }
+
+        cout << "Attempts left: " << attempt << endl;
     }
+
+    cout << "Account Locked!" << endl;
+    return 0;
 }
