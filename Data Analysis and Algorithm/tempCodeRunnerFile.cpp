@@ -1,30 +1,21 @@
 #include <iostream>
 #include <vector>
+#include <algorithm>
 using namespace std;
 
-void powerSet(string &s, int index, string current, vector<string>& result) {
-    // Base case
-    if (index == s.length()) {
-        result.push_back(current);
-        return;
-    }
-
-    // Exclude current character
-    powerSet(s, index + 1, current, result);
-
-    // Include current character
-    powerSet(s, index + 1, current + s[index], result);
-}
-
 int main() {
-    string s = "abcd";
-    vector<string> result;
+    vector<vector<int>> v = {
+        {1,5,6},
+        {2,4,9},
+        {9,-1,0}
+    };
 
-    powerSet(s, 0, "", result);
+    sort(v.begin(), v.end());
 
-    cout << "All subsets:\n";
-    for (string x : result)
-        cout << x << endl;
-
-    return 0;
+    for (auto& row : v) {
+        for (auto& x : row) {
+            cout << x << " ";
+        }
+        cout << endl;
+    }
 }
