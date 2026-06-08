@@ -1,34 +1,10 @@
-#include <iostream>
+#include <bits/stdc++.h>
 using namespace std;
 
-#include <iostream>
-using namespace std;
+int main(){
+    long long a = 913764826;
+    long long b = 346182673;
 
-long long ncr(int n, int r) {
-    r = min (r, n-r);
-
-    int res = 1;
-    for (int i=1; i<=r; i++){
-        res = res * (n + 1 - i) / i;
-    }
-
-    return res;
-}
-
-long long npr (int n, int r){
-    long long res = 1;
-
-    for (int i=0; i<r; i++){
-        res *= (n - i);
-    }
-
-    return res;
-}
-
-int main() {
-    int n = 10;
-    int r = 6;
-
-    cout << ncr(n, r) << endl;
-    cout << npr(n, r) << endl;
+    cout << (a + b) / 2 << endl;
+    cout << a + (b - a) / 2;
 }
